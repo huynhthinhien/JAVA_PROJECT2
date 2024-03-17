@@ -44,7 +44,10 @@ public class ParallelCrawler extends RecursiveTask<Boolean> {
             return false;
         }
 
-        visitedUrls.add(url);
+        if(!visitedUrls.add(url)) {
+            return false;
+        }
+//        visitedUrls.add(url);
 
         PageParser.Result rs = parserFactory.get(url).parse();
 
