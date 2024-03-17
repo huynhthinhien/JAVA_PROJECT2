@@ -36,7 +36,7 @@ public final class CrawlResultWriter {
     Objects.requireNonNull(path);
     try (Writer r = Files.newBufferedWriter(path)) {
        write(r); // write
-       r.close(); // close file
+       r.flush();
     } catch (IOException ex) {
       throw new RuntimeException("Error when write config", ex);
     }

@@ -69,11 +69,10 @@ final class ProfilerImpl implements Profiler {
     if (Files.notExists(path)){
       Files.createFile(path);
     }
-    try{
+    try (BufferedWriter w = Files.newBufferedWriter(path);){
       // Wirte file
-      BufferedWriter w = Files.newBufferedWriter(path);
       writeData(w);
-      w.close(); // close file
+      w.flush(); // close file
     }catch(IOException ioe){
       ioe.printStackTrace();
     }

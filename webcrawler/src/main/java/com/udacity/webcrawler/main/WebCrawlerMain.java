@@ -42,7 +42,7 @@ public final class WebCrawlerMain {
         if (config.getResultPath().isEmpty()) {
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(System.out))) {
                 resultWriter.write(writer);
-                writer.close();
+                writer.flush();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -56,7 +56,7 @@ public final class WebCrawlerMain {
             if (config.getProfileOutputPath().isEmpty()) {
                 try (Writer writer = new BufferedWriter(new OutputStreamWriter(System.out))) {
                     profiler.writeData(writer);
-                    writer.close();
+                    writer.flush();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

@@ -33,6 +33,8 @@ final class ProfilingMethodInterceptor implements InvocationHandler {
                 return method.invoke(delegate, args);
             } catch (InvocationTargetException e) {
                 throw e.getTargetException();
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
             } finally {
               //Information about the method's execution time is logged
                Instant endTime = clock.instant();
